@@ -28,4 +28,9 @@ jobs:
      run: |
        chmod +x gradlew 
        ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD_LAB }} 
+
+   - name: Docker Build
+     run: |
+       docker build --tag z4nd3r/labfinal:latest
+       docker images
        
