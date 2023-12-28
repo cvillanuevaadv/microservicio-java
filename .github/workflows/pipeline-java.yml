@@ -29,9 +29,9 @@ jobs:
            chmod +x gradlew
            ./gradlew build sonar --info    
         
-      - name: copia JAR
+      - name: Copia de JAR
         run: |
-          cp $GITHUB_WORKSPACE/build/libs/message-0.0.1-SNAPSHOT.jar .
+          cp $GITHUB_WORKSPACE/build/libs/lab-final-0.0.1-SNAPSHOT.jar .
           chmod 777 ./message-0.0.1-SNAPSHOT.jar
       
       - name: Login to Docker Hub
@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: 0lb4p/feature-ms-pablo-morales-mensaje:latest
+          tags: z4nd3r/labfinal:latest
 
   deploy:
 
@@ -54,6 +54,6 @@ jobs:
 
     - uses: actions/checkout@v3
     
-    - name: Deploy in k8s
+    - name: Deploy in Minikube
       run: |
         kubectl apply -f deployment.yml
