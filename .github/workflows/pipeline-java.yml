@@ -2,9 +2,9 @@ name: CI
 on:
   
  push:
-  branches: [ "main" ]
+  branches: [ "feature-ms-carlosvillanueva-mensaje" ]
  pull_request:
-  branches: [ "main" ]
+  branches: [ "feature-ms-carlosvillanueva-mensaje" ]
   
  workflow_dispatch:
 jobs:
