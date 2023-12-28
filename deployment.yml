@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-deployment
+  name: labfinal-deployment
   labels:
-    app: pet-clinic
+    app: lab-final
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: pet-clinic
+      app: lab-final
   template:
     metadata:
       labels:
-        app: pet-clinic
+        app: lab-final
     spec:
       containers:
-      - name: pet-clinic
-        image: clagosu/pet-clinic:latest
+      - name: lab-final
+        image: z4nd3r/labfinal:latest
         ports:
         - containerPort: 8085
