@@ -20,7 +20,7 @@ jobs:
           chmod +x gradlew
           ./gradlew build
           ls build/libs
-          cat build/reports/jacoco/test/jacocoTestReport.xml
+          
           
       - name: Code Review
         env:
@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name: Build and push
+      - name: Build y push
         uses: docker/build-push-action@v5
         with:
           push: true
