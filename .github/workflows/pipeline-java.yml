@@ -24,7 +24,7 @@ jobs:
           
       - name: Code Review
         env:
-           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+           SONAR_TOKEN: ${{ secrets.TOKEN_SONARCLOUD_LAB }}
         run: |
            chmod +x gradlew
            ./gradlew build sonar --info    
