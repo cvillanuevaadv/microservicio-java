@@ -1,61 +1,59 @@
-name: CI
+name: Cambiar mensaje
+
 on:
   
- push:
-  branches: [ "feature-ms-carlosvillanueva-mensaje" ]
- pull_request:
-  branches: [ "feature-ms-carlosvillanueva-mensaje" ]
-  
- workflow_dispatch:
+  push:
+  workflow_dispatch:
+
 jobs:
   
- build:
-   
-  runs-on: ubuntu-latest
-  
-  steps:
-   
-   - uses: actions/checkout@v3
-   # prueba
-   - name: Build
-     run: |
-      echo "Construyendo"
-      chmod +x gradlew
-      ./gradlew build
-      ls -ltr
+  build:
+    
+    runs-on: ubuntu-latest
 
-   - name: SonarCloud Analysis
-     run: |
-       chmod +x gradlew 
-       ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD_LAB }} 
-   - name: Docker Login
-     uses: docker/login-action@v2.2.0
-     with:
-       username: ${{ secrets.DOCKER_USERNAME }}
-       password: ${{ secrets.DOCKER_PASSWORD }}
-       
-   - name: Copia de Jar a Raiz de proyecto
-     run: |
-      ls -lt
-      cp $GITHUB_WORKSPACE/build/libs/spring-petclinic-2.6.0.jar .
-      chmod 777 spring-petclinic-2.6.0.jar
-      ls -lt
+    steps:
+    
+      - uses: actions/checkout@v3
+
+      - name: Build
+        run: |
+          chmod +x gradlew
+          ./gradlew build
+          ls build/libs
+          # cat build/reports/jacoco/test/jacocoTestReport.xml
+          
+      - name: Code Review
+        env:
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+           chmod +x gradlew
+           ./gradlew build sonar --info    
+        
+      - name: copia JAR
+        run: |
+          cp $GITHUB_WORKSPACE/build/libs/message-0.0.1-SNAPSHOT.jar .
+          chmod 777 ./message-0.0.1-SNAPSHOT.jar
       
-   - name: Docker Build
-     run: |
-       docker build --tag z4nd3r/labfinal:latest .
-       docker images
-       
-   - name: Docker Push
-     run: |
-       docker push z4nd3r/labfinal:latest
-       
-  deploy:
-   runs-on: self-hosted
-   needs: build
-   steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: 0lb4p/feature-ms-pablo-morales-mensaje:latest
 
-   - name: Deploy a Minikube
-     run: |
-       kubectl apply -f deployment.yml
-       
+  deploy:
+
+    runs-on: self-hosted
+    needs: build
+    steps:
+
+    - uses: actions/checkout@v3
+    
+    - name: Deploy in k8s
+      run: |
+        kubectl apply -f deployment.yml
