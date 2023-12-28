@@ -22,6 +22,7 @@ jobs:
       echo "Construyendo"
       chmod +x gradlew
       ./gradlew build
+      ls -ltr
 
    - name: SonarCloud Analysis
      run: |
