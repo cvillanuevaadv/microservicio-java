@@ -36,6 +36,7 @@ jobs:
        
    - name: Copia de Jar a Raiz de proyecto
      run: |
+      ls -lt
       cp $GITHUB_WORKSPACE/build/libs/spring-petclinic-2.6.0.jar .
       chmod 777 spring-petclinic-2.6.0.jar
       ls -lt
@@ -48,4 +49,13 @@ jobs:
    - name: Docker Push
      run: |
        docker push z4nd3r/labfinal:latest
+       
+  deploy:
+   runs-on: self-hosted
+   needs: build
+   steps:
+
+   - name: Deploy a Minikube
+     run: |
+       kubectl apply -f deployment.yml
        
