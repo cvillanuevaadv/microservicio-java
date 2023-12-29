@@ -10,4 +10,8 @@ RUN ls -l
 
 WORKDIR /app
 
-CMD java -jar labfinal.jar
+RUN pwd
+
+RUN ls -l
+
+CMD java -jar /app/labfinal.jar
