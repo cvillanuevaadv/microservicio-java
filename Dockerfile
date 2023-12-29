@@ -4,9 +4,9 @@ EXPOSE 8086
 
 RUN pwd
 
-RUN ls -l $GITHUB_WORKSPACE/build/libs/
+RUN ls -l /app/
 
-COPY $GITHUB_WORKSPACE/build/libs/labfinal-0.0.1.jar /app/labfinal.jar
+COPY *.jar /app/labfinal.jar
 
 RUN echo "Ruta de mi archivo JAR:"
 
