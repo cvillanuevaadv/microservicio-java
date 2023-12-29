@@ -32,6 +32,8 @@ jobs:
       - name: Copia de JAR
         run: |
           cp $GITHUB_WORKSPACE/build/libs/labfinal-0.0.1.jar .
+          pwd
+          ls -l
           chmod 777 ./labfinal-0.0.1.jar
       
       - name: Login to Docker Hub
