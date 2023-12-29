@@ -2,7 +2,9 @@ FROM openjdk:11-jre
 
 EXPOSE 8086
 
-ADD *.jar /app/labfinal.jar
+COPY *.jar /app/labfinal.jar
+
+RUN echo "Ruta de mi archivo JAR:"
 
 WORKDIR /app
 
