@@ -6,7 +6,7 @@ RUN pwd
 
 RUN ls -l
 
-ADD labfinal-0.0.1.jar /app/labfinal.jar
+COPY ./build/libs/labfinal-0.0.1.jar /app/labfinal.jar
 
 WORKDIR /app
 
