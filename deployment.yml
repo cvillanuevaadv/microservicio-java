@@ -17,5 +17,6 @@ spec:
       containers:
       - name: lab-final
         image: z4nd3r/labfinal:latest
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 8086
