@@ -1,6 +1,6 @@
 FROM openjdk:11-jre
 
-EXPOSE 8086
+EXPOSE 8080
 
 RUN pwd
 
