@@ -1,12 +1,14 @@
 plugins {
 	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id "org.sonarqube" version "4.4.1.3373"
 	id 'java'
-	id "org.sonarqube" version "4.2.1.3168"
+  id 'jacoco'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
+archivesBaseName = 'lab-final'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -18,15 +20,40 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacoco {
+    toolVersion = "0.8.9"
+}
+
+jacocoTestReport {
+    dependsOn test 
+    reports {
+        xml.required = true
+        csv.required = false
+    }
+}
+
+jacocoTestCoverageVerification {
+	enabled = true
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.7
+            }
+        }
+    }
+}
+
 sonar {
   properties {
-    property "sonar.projectKey", "cvillanuevaadv_microservicio-java"
-    property "sonar.organization", "laboratorio-final-carlosvillanueva"
-    property "sonar.host.url", "https://sonarcloud.io/"
-    property "sonar.projectName", "microservicio-java"
+    property "sonar.projectKey", "0lb4p-organization_feature-ms-pablomorales-mensaje"
+    property "sonar.organization", "0lb4p-organization"
+    property "sonar.host.url", "https://sonarcloud.io"
   }
 }
 
-test {
-	useJUnitPlatform()
-}
+check.dependsOn jacocoTestCoverageVerification
