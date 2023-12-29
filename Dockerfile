@@ -4,7 +4,9 @@ EXPOSE 8086
 
 RUN pwd
 
-RUN ls -l 
+RUN ls -l
+
+RUN ls -l /home/runner/work/microservicio-java/microservicio-java
 
 ADD labfinal-0.0.1.jar /app/labfinal.jar
 
