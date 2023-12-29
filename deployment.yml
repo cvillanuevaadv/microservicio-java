@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: labfinal-deployment
+  name: labfinal
   labels:
     app: labfinal
 spec:
