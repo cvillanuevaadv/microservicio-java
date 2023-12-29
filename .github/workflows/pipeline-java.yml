@@ -48,11 +48,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build y push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: z4nd3r/labfinal:latest
-
+        run: |
+           docker build . --file Dockerfile --tag z4nd3r/labfinal:latest
+           docker push z4nd3r/labfinal:latest
+          
   deploy:
 
     runs-on: self-hosted
