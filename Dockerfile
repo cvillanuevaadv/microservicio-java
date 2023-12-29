@@ -2,8 +2,8 @@ FROM openjdk:11-jre
 
 EXPOSE 8086
 
-ADD *.jar /app/lab-final.jar
+ADD *.jar /app/labfinal.jar
 
 WORKDIR /app
 
-CMD java -jar lab-final.jar
+CMD java -jar labfinal.jar
