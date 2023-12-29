@@ -31,8 +31,8 @@ jobs:
         
       - name: Copia de JAR
         run: |
-          cp $GITHUB_WORKSPACE/build/libs/testing-web-0.0.1.jar .
-          chmod 777 ./testing-web-0.0.1.jar
+          cp $GITHUB_WORKSPACE/build/libs/testing-web-0.0.1-SNAPSHOT.jar .
+          chmod 777 ./testing-web-0.0.1-SNAPSHOT.jar
       
       - name: Login to Docker Hub
         uses: docker/login-action@v3
