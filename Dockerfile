@@ -6,7 +6,7 @@ RUN pwd
 
 RUN ls -l 
 
-ADD *.jar /app/labfinal.jar
+ADD labfinal-0.0.1.jar /app/labfinal.jar
 
 
 RUN ls -l
