@@ -50,9 +50,10 @@ jacocoTestCoverageVerification {
 
 sonar {
   properties {
-    property "sonar.projectKey", "0lb4p-organization_feature-ms-pablomorales-mensaje"
-    property "sonar.organization", "0lb4p-organization"
-    property "sonar.host.url", "https://sonarcloud.io"
+    property "sonar.projectKey", "cvillanuevaadv_microservicio-java"
+    property "sonar.organization", "laboratorio-final-carlosvillanueva"
+    property "sonar.host.url", "https://sonarcloud.io/"
+    property "sonar.projectName", "microservicio-java"
   }
 }
 
