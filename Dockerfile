@@ -4,11 +4,10 @@ EXPOSE 8086
 
 RUN pwd
 
-RUN ls -l /app/
+RUN ls -l 
 
-COPY *.jar /app/labfinal.jar
+ADD *.jar /app/labfinal.jar
 
-RUN echo "Ruta de mi archivo JAR:"
 
 RUN ls -l
 
