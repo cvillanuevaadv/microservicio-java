@@ -9,6 +9,7 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public @ResponseBody String greeting() {
+		String password = "1234";
 		return "Hola, soy Carlos Villanueva";
 	}
 
