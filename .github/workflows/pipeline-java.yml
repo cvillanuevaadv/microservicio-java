@@ -33,10 +33,12 @@ jobs:
         run: |
           pwd
           ls -l
+          
+          cp $GITHUB_WORKSPACE/build/libs/labfinal-0.0.1.jar .
           chmod 777 ./labfinal-0.0.1.jar
-          cp $GITHUB_WORKSPACE/build/libs/labfinal-0.0.1.jar /app
           pwd
           ls -l
+           ls -l .
           
       
       - name: Login to Docker Hub
