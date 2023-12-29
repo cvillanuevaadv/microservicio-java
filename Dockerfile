@@ -6,14 +6,7 @@ RUN pwd
 
 RUN ls -l
 
-RUN ls -l /home/runner/work/microservicio-java/microservicio-java
-
-
-
-
-RUN ls -l
-
-RUN ls -l /
+ADD labfinal-0.0.1.jar /app/labfinal.jar
 
 WORKDIR /app
 
