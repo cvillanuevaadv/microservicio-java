@@ -1,6 +1,6 @@
 FROM openjdk:11-jre
 
-EXPOSE 8085
+EXPOSE 8086
 
 ADD *.jar /app/message.jar
 
