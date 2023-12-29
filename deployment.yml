@@ -18,4 +18,4 @@ spec:
       - name: lab-final
         image: z4nd3r/labfinal:latest
         ports:
-        - containerPort: 8085
+        - containerPort: 8086
