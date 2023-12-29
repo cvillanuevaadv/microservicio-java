@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: labfinal-deployment
   labels:
-    app: lab-final
+    app: labfinal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lab-final
+      app: labfinal
   template:
     metadata:
       labels:
-        app: lab-final
+        app: labfinal
     spec:
       containers:
-      - name: lab-final
+      - name: labfinal
         image: z4nd3r/labfinal:latest
         imagePullPolicy: "Always"
         ports:
